@@ -8,7 +8,7 @@ const Photo = React.createClass({
     return (
     <figure className="grid-figure">
       <div className="grid-photo-wrap">
-        <Link to={'/view/${post.code}'}>
+        <Link to={`/view/${post.code}`}>
           <img src={post.display_src} alt={post.caption} className="grid-photo"></img>
         </Link>
 
@@ -22,7 +22,7 @@ const Photo = React.createClass({
         <p>{post.caption}</p>
         <div className="control-buttons">
           <button className="likes" onClick={this.props.increment.bind(null, i)}>&hearts; {post.likes}</button>
-          <Link className="button" to={'/view/${post.code}'}>
+          <Link className="button" to={`/view/${post.code}`}>
             <span className="comment-count">
               <span className="speech-bubble">
               </span>
