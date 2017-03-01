@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-    createStore
-} from 'redux';
+import {createStore} from './myReduxStoreImpl';
 
 const counter = (state = 0, action) => {
     switch (action.type) {
