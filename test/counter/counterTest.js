@@ -11,16 +11,16 @@ describe('counter test suite', function() {
         });
         expect(store.getState()).to.eql(1);
     });
-    it('should return 0 decremented with state 1', function() {
+    it('should return 0 when decremented with state 1', function() {
         store.dispatch({
             type: 'DECREMENT'
         });
         expect(store.getState()).to.eql(0);
     });
-    it('should return -1 decemented again with state 0', function() {
+    it('should not decrement below 0', function() {
         store.dispatch({
             type: 'DECREMENT'
         });
-        expect(store.getState()).to.eql(-1);
+        expect(store.getState()).to.eql(0);
     });
 });

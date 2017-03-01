@@ -2,16 +2,32 @@ import {
     store
 } from './counter';
 
+
+import {
+    CounterComponent
+} from './components/counterComponent';
+
+import ReactDOM from 'react-dom';
+import React from 'react';
+
 const render = () => {
-    document.body.innerText = store.getState();
-};
 
-store.subscribe(render);
+        ReactDOM.render( < CounterComponent value = {
+                store.getState()
+            }
+            increment = {
+                () => store.dispatch({
+                    type: 'INCREMENT'
+                })
+            }
+            decrement = {
+                () => store.dispatch({
+                    type: 'DECREMENT'
+                })
+            }
+            />, document.getElementById('root'));
 
-render();
+        };
 
-document.addEventListener('click', (e) => {
-    store.dispatch({
-        type: 'INCREMENT'
-    });
-});
+        store.subscribe(render);
+        render();

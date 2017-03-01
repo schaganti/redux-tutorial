@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {createStore} from './myReduxStoreImpl';
+import {createStore} from 'redux';
 
 const counter = (state = 0, action) => {
     switch (action.type) {
@@ -8,7 +8,7 @@ const counter = (state = 0, action) => {
             return state + 1;
             break;
         case 'DECREMENT':
-            return state - 1;
+            return state > 0 ? state - 1 : state;
             break;
         default:
             return state;
