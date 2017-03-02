@@ -15,4 +15,4 @@ const counter = (state = 0, action) => {
     }
 }
 
-export const store = createStore(counter);
+export const store = createStore(counter, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
