@@ -2,7 +2,7 @@ import assert from 'assert';
 import expect from 'expect.js';
 import deepfreeze from 'deepfreeze';
 
-import {todos} from '../../client/reducer/todo';
+import {todos} from '../../client/reducer/todoListReducer';
 
 describe('todo reducer test suite', () => {
     it('should add a todo item when action type is ADD_TODO', () => {

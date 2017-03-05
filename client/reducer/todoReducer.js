@@ -1,21 +1,5 @@
-export const todos = (state = [], action) => {
-    switch (action.type) {
-        case 'ADD_TODO':
-            return [
-                ...state,
-                todo(undefined, action)
-            ];
-        case 'TOGGLE_TODO':
-            return state.map(t => {
-                return todo(t, action);
-            });
-        default:
-            return state;
 
-    }
-}
-
-const todo = (todo, action) => {
+export const todo = (todo, action) => {
     switch (action.type) {
         case 'ADD_TODO':
             return {id: action.id, text: action.text, completed: false}
