@@ -35,7 +35,7 @@ describe('todo reducer test suite', () => {
             }, {
                 id: 2,
                 text: 'some text',
-                completed: true
+                completed: false
             }
         ]
 
@@ -47,12 +47,12 @@ describe('todo reducer test suite', () => {
             }, {
                 id: 2,
                 text: 'some text',
-                completed: true
+                completed: false
             }
         ]
         deepfreeze(todoListBefore);
         expect(todos(todoListBefore, {
-            type: 'TOOGLE_TODO',
+            type: 'TOGGLE_TODO',
             id: 1
         })).to.eql(todoListAfter);
 
