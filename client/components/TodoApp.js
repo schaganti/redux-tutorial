@@ -4,6 +4,7 @@ import {store} from '../reducer/todoAppReducer';
 import {Todo} from './todo';
 import {TodoInput} from './todoInput';
 import {FilterComponent} from './FilterComponent';
+import {TodoList} from './TodoList';
 
 let nextId = 1;
 
@@ -32,6 +33,7 @@ const TodoApp = React.createClass({
 
         return (
             <div>
+
                 <TodoInput addTodo={(inputValue) => {
                     store.dispatch({
                         type: 'ADD_TODO',
@@ -39,14 +41,12 @@ const TodoApp = React.createClass({
                         id: nextId++
                     });
                 }}/>
+
                 <FilterComponent visibilityFilter={visibilityFilter} filter={(filter) => {
                     store.dispatch({type: 'SET_VISIBILITY_FILTER', filter:filter})
                 }}/>
-                <ul>
-                  {filteredTodoList.map(todo => <Todo key={todo.id} todo={todo} onClick={() => {
-                        store.dispatch({type: 'TOGGLE_TODO', id: todo.id});
-                    }}/>)}
-                </ul>
+
+                <TodoList todos={filteredTodoList} toggleTodo={(todo) => {store.dispatch({type: 'TOGGLE_TODO', id: todo.id});}}/>
 
             </div>
         )
