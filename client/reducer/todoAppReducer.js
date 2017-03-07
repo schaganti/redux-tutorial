@@ -12,6 +12,6 @@ export const todoAppReducer = combineReducers({
 export const store = createStore(todoAppReducer);
 
 //TODO this has been added just for test cases so that each test can get a new store. In real application we might just export store.
-export const newStore = () => {
+export const newStore = () => {    
     return createStore(todoAppReducer);
 }
