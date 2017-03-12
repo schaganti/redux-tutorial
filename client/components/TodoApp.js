@@ -4,26 +4,16 @@ import {store} from '../reducer/todoAppReducer';
 import {Todo} from './todo';
 import {TodoInput} from './todoInput';
 import {FooterComponent} from './FooterComponent';
-import {TodoList} from './TodoList';
+import {VisibleTodoList} from './VisibleTodoList';
 
-let nextId = 1;
-
-const TodoApp = ({todos, visibilityFilter}) => {
+const TodoApp = () => {
     return (
         <div>
-            <TodoInput addTodo={(inputValue) => {
-                store.dispatch({
-                    type: 'ADD_TODO',
-                    text: inputValue,
-                    id: nextId++
-                });
-            }}/>
+            <TodoInput/>
 
-            <TodoList todos={todos} visibilityFilter={visibilityFilter} toggleTodo={(todo) => {
-                store.dispatch({type: 'TOGGLE_TODO', id: todo.id});
-            }}/>
+            <VisibleTodoList/>
 
-            <FooterComponent />
+            <FooterComponent/>
         </div>
     )
 }
