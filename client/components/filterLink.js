@@ -1,18 +1,27 @@
+import {Component} from 'react';
 import React from 'react';
+import {Link} from './link';
+import {store} from '../reducer/todoAppReducer';
 
-export const FilterLink = ({filter, children, activeFilter, onFilter}) => {
-    if (filter === activeFilter) {
+export class FilterLink extends Component {
+
+    componentDidMount() {
+      this.unsubscribe =  store.subscribe(() => {this.forceUpdate();});
+    }
+
+    componentWillUnmount() {
+      this.unsubscribe();
+    }
+
+    render() {
+
+        const props = this.props;
+        const state = store.getState();
+
         return (
-            <span>
-                <b>{children}</b>
-            </span>
-        );
-    } else {
-        return (
-            <a href="#" onClick={e => {
-                e.preventDefault();
-                onFilter(filter);
-            }}>{children}</a>
+            <Link active={state.visibilityFilter === props.filter} onClick={() => {
+                store.dispatch({type: 'SET_VISIBILITY_FILTER', filter: props.filter})
+            }}>{props.children}</Link>
         );
     }
-};
+}

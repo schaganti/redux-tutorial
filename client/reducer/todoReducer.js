@@ -1,4 +1,3 @@
-
 export const todo = (todo, action) => {
     switch (action.type) {
         case 'ADD_TODO':
