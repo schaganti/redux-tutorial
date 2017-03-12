@@ -1,8 +1,7 @@
 import React from 'react';
-import {store} from '../reducer/todoAppReducer';
 
 let nextId = 1;
-export const TodoInput = ({addTodo}) => {
+export const TodoInput = ({store}) => {
     let input;
     return (
         <div>

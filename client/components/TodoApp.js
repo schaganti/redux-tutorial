@@ -9,14 +9,14 @@ import {VisibleTodoList} from './VisibleTodoList';
 const TodoApp = () => {
     return (
         <div>
-            <TodoInput/>
+            <TodoInput store={store}/>
 
-            <VisibleTodoList/>
+            <VisibleTodoList store={store}/>
 
-            <FooterComponent/>
+            <FooterComponent store={store}/>
         </div>
     )
 }
 
 ReactDOM.render(
-    <TodoApp/>, document.getElementById('root'));
+    <TodoApp store={store}/>, document.getElementById('root'));
