@@ -1,27 +1,20 @@
 import {Component} from 'react';
 import React from 'react';
+import {connect} from 'react-redux';
 import {Link} from './link';
 
-export class FilterLink extends Component {
+const mapStateToProps = (state, orgProps) => {
+    return ({
+        active: state.visibilityFilter === orgProps.filter
+    });
+};
 
-    componentDidMount() {
-        this.store = this.props.store;
-        this.unsubscribe = this.store.subscribe(() => {
-            this.forceUpdate();
-        });
-    }
+const mapDispatchToProps = (dispatch, orgProps) => {
+    return ({
+        onClick: () => {
+            dispatch({type: 'SET_VISIBILITY_FILTER', filter: orgProps.filter})
+        }
+    });
+};
 
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
-    render() {
-        const props = this.props;
-        const state = this.store.getState();
-        return (
-            <Link active={state.visibilityFilter === props.filter} onClick={() => {
-                this.store.dispatch({type: 'SET_VISIBILITY_FILTER', filter: props.filter})
-            }}>{props.children}</Link>
-        );
-    }
-}
+export const FilterLink = connect(mapStateToProps, mapDispatchToProps)(Link);

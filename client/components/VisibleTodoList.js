@@ -1,6 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import {TodoList} from './todoList';
+import {connect} from 'react-redux';
 
 const filteredTodos = (todos, filter) => {
     if (filter === 'SHOW_ALL') {
@@ -19,24 +20,18 @@ const filteredTodos = (todos, filter) => {
     return todos;
 };
 
-export class VisibleTodoList extends Component {
-
-    componentDidMount() {
-        this.unsubscribe = this.props.store.subscribe(() => {
-            this.forceUpdate()
-        });
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
-    render() {
-        const store = this.props.store;
-        const filteredTodoList = filteredTodos(store.getState().todos, store.getState().visibilityFilter);
-        return (<TodoList todoList ={filteredTodoList} toggleTodo={(todo) => {
-            store.dispatch({type: 'TOGGLE_TODO', id: todo.id});
-        }}/>);
-    }
-
+const mapStateToProps = (state) => {
+    return ({
+        todoList: filteredTodos(state.todos, state.visibilityFilter)
+    });
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return ({
+        toggleTodo: (todo) => {
+            dispatch({type: 'TOGGLE_TODO', id: todo.id});
+        }
+    });
+}
+
+export const VisibleTodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
