@@ -5,18 +5,19 @@ import {Todo} from './todo';
 import {TodoInput} from './todoInput';
 import {FooterComponent} from './FooterComponent';
 import {VisibleTodoList} from './VisibleTodoList';
+import {Provider} from 'react-redux';
 
 const TodoApp = () => {
     return (
         <div>
-            <TodoInput store={store}/>
 
-            <VisibleTodoList store={store}/>
+            <TodoInput/>
+            <VisibleTodoList/>
+            <FooterComponent/>
 
-            <FooterComponent store={store}/>
         </div>
     )
 }
 
 ReactDOM.render(
-    <TodoApp store={store}/>, document.getElementById('root'));
+    <Provider store={store}><TodoApp/></Provider>, document.getElementById('root'));

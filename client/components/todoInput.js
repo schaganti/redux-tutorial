@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 let nextId = 1;
-export const TodoInput = ({store}) => {
+
+export let TodoInput = (store) => {
     let input;
     return (
         <div>
@@ -19,3 +21,5 @@ export const TodoInput = ({store}) => {
         </div>
     );
 }
+
+TodoInput = connect()(TodoInput);
