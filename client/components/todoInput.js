@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 let nextId = 1;
 
-export let TodoInput = (store) => {
+export let TodoInput = ({dispatch}) => {
     let input;
     return (
         <div>
@@ -11,7 +11,7 @@ export let TodoInput = (store) => {
                 input = node;
             }}></input>
             <button onClick={() => {
-                store.dispatch({
+                dispatch({
                     type: 'ADD_TODO',
                     text: input.value,
                     id: nextId++
