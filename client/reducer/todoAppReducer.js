@@ -1,12 +1,22 @@
-import {createStore} from 'redux';
-import {combineReducers} from 'redux';
-import {todos} from './todoListReducer'
-import {todo} from './todoReducer';
-import {visibilityFilter} from './visibilityFilterReducer';
+import {
+    createStore
+} from 'redux';
+import {
+    combineReducers
+} from 'redux';
+import {
+    todos
+} from './todoListReducer'
+import {
+    todo
+} from './todoReducer';
+import {
+    visibilityFilter
+} from './visibilityFilterReducer';
 
 export const todoAppReducer = combineReducers({
-  todos:todos,
-  visibilityFilter: visibilityFilter
+    todos: todos,
+    visibilityFilter: visibilityFilter
 });
 
 export const store = createStore(todoAppReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
