@@ -1,3 +1,6 @@
+import {
+    v4
+} from 'node-uuid'
 export const setVisibiityFilter = (filter) =>
     ({
         type: 'SET_VISIBILITY_FILTER',
@@ -10,7 +13,7 @@ export const addTodo = (value) =>
     ({
         type: 'ADD_TODO',
         text: value,
-        id: nextId++
+        id: v4()
     });
 
 
