@@ -2,6 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import {TodoList} from './todoList';
 import {connect} from 'react-redux';
+import {toogleTodo} from '../actions/actionCreators';
 
 const filteredTodos = (todos, filter) => {
     if (filter === 'SHOW_ALL') {
@@ -29,7 +30,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return ({
         toggleTodo: (todo) => {
-            dispatch({type: 'TOGGLE_TODO', id: todo.id});
+            dispatch(toogleTodo(todo.id));
         }
     });
 }

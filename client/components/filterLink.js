@@ -2,6 +2,7 @@ import {Component} from 'react';
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from './link';
+import {setVisibiityFilter} from '../actions/actionCreators';
 
 const mapStateToProps = (state, orgProps) => {
     return ({
@@ -12,7 +13,7 @@ const mapStateToProps = (state, orgProps) => {
 const mapDispatchToProps = (dispatch, orgProps) => {
     return ({
         onClick: () => {
-            dispatch({type: 'SET_VISIBILITY_FILTER', filter: orgProps.filter})
+            dispatch(setVisibiityFilter(orgProps.filter));
         }
     });
 };
